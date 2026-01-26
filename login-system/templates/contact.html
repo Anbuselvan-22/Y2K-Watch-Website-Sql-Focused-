@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Us - Luxury Watches{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <h1 class="text-center display-4 fw-bold text-gold mb-5">Contact Us</h1>
+
+        <div class="contact-row">
+            <div class="contact-col mb-4">
+                <div class="contact-card">
+                    <div class="contact-body p-4">
+                        <h3 class="contact-title text-gold mb-4"><i class="fas fa-map-marker-alt"></i> Visit Our Boutique</h3>
+                        <p class="mb-2"><strong>Address:</strong></p>
+                        <p>123 Luxury Avenue<br>Swiss Alps, Switzerland 12345</p>
+
+                        <p class="mb-2"><strong>Phone:</strong></p>
+                        <p>+41 123 456 7890</p>
+
+                        <p class="mb-2"><strong>Email:</strong></p>
+                        <p>info@luxetime.com</p>
+
+                        <p class="mb-2"><strong>Hours:</strong></p>
+                        <p>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 10:00 AM - 4:00 PM<br>Sunday: Closed</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-col mb-4">
+                <div class="contact-card">
+                    <div class="contact-body p-4">
+                        <h3 class="contact-title text-gold mb-4"><i class="fas fa-envelope"></i> Send us a Message</h3>
+                        <form>
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="subject" class="form-label">Subject</label>
+                                <input type="text" class="form-control" id="subject" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Message</label>
+                                <textarea class="form-control" id="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-gold btn-lg full-width">
+                                <i class="fas fa-paper-plane"></i> Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-global mt-5">
+            <div class="contact-col-full">
+                <div class="contact-card">
+                    <div class="contact-body p-4">
+                        <h3 class="contact-title text-gold mb-4 text-center" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;"><i class="fas fa-globe" style="font-size: 22px;"></i> Our Global Presence</h3>
+                        <div class="global-locations text-center">
+                            <div class="location-item mb-3">
+                                <i class="fas fa-building fa-2x text-gold mb-2"></i>
+                                <h5>Geneva</h5>
+                                <p>Headquarters</p>
+                            </div>
+                            <div class="location-item mb-3">
+                                <i class="fas fa-building fa-2x text-gold mb-2"></i>
+                                <h5>New York</h5>
+                                <p>North America</p>
+                            </div>
+                            <div class="location-item mb-3">
+                                <i class="fas fa-building fa-2x text-gold mb-2"></i>
+                                <h5>London</h5>
+                                <p>Europe</p>
+                            </div>
+                            <div class="location-item mb-3">
+                                <i class="fas fa-building fa-2x text-gold mb-2"></i>
+                                <h5>Dubai</h5>
+                                <p>Middle East</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

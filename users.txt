@@ -1,0 +1,27 @@
+ Run:- python3 /Users/anbuselvan/DBMS/login-system/app.py
+
+Mysql:-
+(login system )mysql -u root -e "USE login_db; SHOW TABLES;"
+-----------------------------------------------
+(cart payment details) :-
+cd /Users/anbuselvan/DBMS/login-system && python3 -c "
+import pymysql
+conn = pymysql.connect(host='localhost', user='root', password='', database='login_db', cursorclass=pymysql.cursors.DictCursor)
+cursor = conn.cursor()
+
+tables = ['users', 'products', 'cart', 'orders', 'order_items']
+for table in tables:
+    cursor.execute(f'SELECT COUNT(*) as count FROM {table}')
+    count = cursor.fetchone()['count']
+    print(f'{table}: {count} records')
+    if count > 0:
+        cursor.execute(f'SELECT * FROM {table} LIMIT 3')
+        rows = cursor.fetchall()
+        if rows:
+            print('  Sample data:')
+            for row in rows:
+                print(f'    {row}')
+    print()
+cursor.close()
+conn.close()
+"

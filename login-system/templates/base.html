@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}LuxeTime - Luxury Watches{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="custom-navbar">
+        <div class="nav-container">
+            <a href="{{ url_for('home') }}" class="nav-brand" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                <i class="fa-regular fa-clock" style="color: #ffffff; font-size: 22px;"></i>Y2K
+            </a>
+            
+            <!-- Burger Menu Button -->
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            
+            <!-- Navigation Menu -->
+            <ul class="nav-list" id="nav-menu">
+                <li class="nav-item"><a href="{{ url_for('home') }}" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="{{ url_for('about') }}" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="{{ url_for('products') }}" class="nav-link">Products</a></li>
+                <li class="nav-item"><a href="{{ url_for('cart') }}" class="nav-link"><i class="fas fa-shopping-cart"></i> Cart</a></li>
+                <li class="nav-item"><a href="{{ url_for('contact') }}" class="nav-link">Contact</a></li>
+                {% if session.user_id %}
+                <li class="nav-item"><a href="{{ url_for('dashboard') }}" class="nav-link">Dashboard</a></li>
+                <li class="nav-item"><a href="{{ url_for('logout') }}" class="nav-link"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                {% else %}
+                <li class="nav-item"><a href="{{ url_for('login') }}" class="nav-link">Login</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div class="container mt-3">
+        {% for category, message in messages %}
+            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+        </div>
+    {% endif %}
+    {% endwith %}
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="custom-footer">
+        <div class="container">
+            <p>&copy; 2026 Y2K. All rights reserved. <i class="fas fa-heart"></i> Crafted with precision</p>
+        </div>
+    </footer>
+
+    <!-- Mobile Navigation JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navToggle = document.getElementById('nav-toggle');
+            const navMenu = document.getElementById('nav-menu');
+            const body = document.body;
+            
+            navToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('nav-active');
+                navToggle.classList.toggle('toggle-active');
+                body.classList.toggle('nav-open');
+            });
+            
+            // Close menu when clicking on a link (mobile)
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('nav-active');
+                    navToggle.classList.remove('toggle-active');
+                    body.classList.remove('nav-open');
+                });
+            });
+            
+            // Close menu when clicking outside (mobile)
+            document.addEventListener('click', function(event) {
+                const isClickInsideNav = navToggle.contains(event.target) || navMenu.contains(event.target);
+                if (!isClickInsideNav && navMenu.classList.contains('nav-active')) {
+                    navMenu.classList.remove('nav-active');
+                    navToggle.classList.remove('toggle-active');
+                    body.classList.remove('nav-open');
+                }
+            });
+            
+            // Close menu on window resize (if user rotates device)
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 992) {
+                    navMenu.classList.remove('nav-active');
+                    navToggle.classList.remove('toggle-active');
+                    body.classList.remove('nav-open');
+                }
+            });
+        });
+
+        // Cart Popup Notification System
+        function showCartPopup(productName, type = 'success') {
+            // Create popup element
+            const popup = document.createElement('div');
+            popup.className = `cart-popup ${type}`;
+            
+            const icon = type === 'success' ? 'fas fa-check-circle' : 'fas fa-exclamation-triangle';
+            const title = type === 'success' ? 'Added to Cart' : 'Error';
+            
+            popup.innerHTML = `
+                <div class="cart-popup-content">
+                    <i class="${icon} cart-popup-icon"></i>
+                    <div class="cart-popup-text">
+                        <div class="cart-popup-title">${title}</div>
+                        <div class="cart-popup-message">${productName}</div>
+                    </div>
+                    <button class="cart-popup-close" onclick="closeCartPopup(this)">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            `;
+            
+            // Add to page
+            document.body.appendChild(popup);
+            
+            // Show popup with animation
+            setTimeout(() => {
+                popup.classList.add('show');
+            }, 100);
+            
+            // Auto-hide after 4 seconds
+            setTimeout(() => {
+                closeCartPopup(popup.querySelector('.cart-popup-close'));
+            }, 4000);
+        }
+
+        function closeCartPopup(closeButton) {
+            const popup = closeButton.closest('.cart-popup');
+            popup.classList.remove('show');
+            
+            // Remove from DOM after animation
+            setTimeout(() => {
+                if (popup.parentNode) {
+                    popup.parentNode.removeChild(popup);
+                }
+            }, 300);
+        }
+
+        // Handle add to cart form submissions
+        document.addEventListener('submit', function(event) {
+            const form = event.target;
+            
+            // Check if this is an add to cart form
+            if (form.action && form.action.includes('/add_to_cart/')) {
+                event.preventDefault();
+                
+                // Get product name from the card
+                const productCard = form.closest('.product-card');
+                const productName = productCard ? productCard.querySelector('.card-title').textContent : 'Product';
+                
+                // Submit form via fetch with proper headers
+                fetch(form.action, {
+                    method: 'POST',
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: new FormData(form)
+                })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error('Failed to add item to cart');
+                    }
+                })
+                .then(data => {
+                    if (data.success) {
+                        // Show success popup with product name from server
+                        showCartPopup(data.product_name || productName);
+                    } else {
+                        // Show error popup
+                        showCartPopup('Error: ' + data.message, 'error');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    // Show error popup
+                    showCartPopup('Error adding item to cart', 'error');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

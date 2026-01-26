@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block title %}Home - Luxury Watches{% endblock %}
+
+{% block content %}
+
+<!-- HERO -->
+<section class="bw-hero">
+    <div class="bw-hero-inner">
+        <div class="bw-hero-text">
+            <h1 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Timeless Precision</h1>
+            <p>
+                Discover luxury watches engineered with precision,
+                crafted for those who value elegance and performance.
+            </p>
+            <div class="bw-hero-buttons">
+                <a href="{{ url_for('products') }}" class="bw-btn bw-btn-primary">
+                    Explore Collection
+                </a>
+                <a href="{{ url_for('about') }}" class="bw-btn bw-btn-outline">
+                    Learn More
+                </a>
+            </div>
+        </div>
+
+        <div class="bw-hero-image">
+            <img src="{{ url_for('static', filename='images/pratik-prasad-ekD-UtzJn9M-unsplash.jpg') }}"
+                 alt="Luxury Watch">
+        </div>
+    </div>
+</section>
+
+<!-- FEATURES -->
+<section class="bw-features">
+    <div class="bw-container">
+        <div class="bw-feature-card">
+            <h3 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Swiss Engineering</h3>
+            <p>Powered by authentic Swiss-made movements, our watches deliver exceptional accuracy, reliability, and mechanical excellence trusted worldwide.</p>
+        </div>
+
+        <div class="bw-feature-card">
+            <h3 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Premium Materials</h3>
+            <p>Every detail is refined using sapphire crystal glass, high-grade stainless steel, and carefully selected premium leather, ensuring durability with timeless beauty.</p>
+        </div>
+
+        <div class="bw-feature-card">
+            <h3 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Lifetime Support</h3>
+            <p>Built to stand the test of time, our watches are supported by comprehensive lifetime service, preserving performance and value for years to come.</p>
+        </div>
+    </div>
+</section>
+
+<!-- COLLECTIONS -->
+<section class="bw-collections">
+    <h2 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Featured Collections</h2>
+
+    <div class="bw-collection-grid">
+        <div class="bw-card">
+            <img src="{{ url_for('static', filename='images/ -5.jpg') }}">
+            <div class="bw-card-body">
+                <h4 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Classic</h4>
+                <p>Timeless designs for every occasion.</p>
+                <a href="{{ url_for('products') }}">View Collection →</a>
+            </div>
+        </div>
+
+        <div class="bw-card">
+            <img src="{{ url_for('static', filename='images/andrey-matveev-9mU2L4dVYFA-unsplash.jpg') }}">
+            <div class="bw-card-body">
+                <h4 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Sport</h4>
+                <p>Built for performance and endurance.</p>
+                <a href="{{ url_for('products') }}">View Collection →</a>
+            </div>
+        </div>
+
+        <div class="bw-card">
+            <img src="https://images.unsplash.com/photo-1434056886845-dac89ffe9b56?auto=format&fit=crop&w=500&q=80">
+            <div class="bw-card-body">
+                <h4 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Limited</h4>
+                <p>Exclusive editions for collectors.</p>
+                <a href="{{ url_for('products') }}">View Collection →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

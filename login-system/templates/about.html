@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}About Us - Luxury Watches{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="about-row align-items-center">
+            <div class="about-col">
+                <h1 class="display-4 fw-bold text-gold mb-4" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Our Story</h1>
+                <p class="lead mb-4" style="font-family:Verdana, Geneva, Tahoma, sans-serif;">Founded in 1920, Y2K has been at the forefront of luxury watchmaking for over a century. Our commitment to excellence and innovation continues to define the industry.</p>
+                <p style="font-family:Verdana, Geneva, Tahoma, sans-serif;">Each watch is a masterpiece of engineering and artistry, combining traditional craftsmanship with modern technology. Our master watchmakers dedicate years of experience to every piece, ensuring that every Y2K watch is not just a timepiece, but a heirloom.</p>
+                <a href="{{ url_for('products') }}" class="btn btn-gold btn-lg mt-3">
+                    <i class="fas fa-eye"></i> Discover Our Craft
+                </a>
+            </div>
+            <div class="about-col">
+                <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Watchmaking Workshop" class="img-fluid rounded shadow-lg">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bg-dark text-light py-5" style="font-family:Verdana, Geneva, Tahoma, sans-serif;">
+    <div class="container">
+        <h2 class="text-center mb-5 text-gold" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; margin-top: 15px;">Why Choose Y2K ?</h2>
+        <div class="about-features">
+            <div class="feature-item mb-4">
+                <div class="feature-content align-items-center">
+                    <i class="fas fa-award fa-2x text-gold me-3"></i>
+                    <div>
+                        <h4 style="font-family:Verdana, Geneva, Tahoma, sans-serif;">Excellence Award</h4>
+                        <p>Recognized globally for our unparalleled craftsmanship and innovation.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="feature-item mb-4">
+                <div class="feature-content align-items-center">
+                    <i class="fas fa-users fa-2x text-gold me-3"></i>
+                    <div>
+                        <h4 style="font-family:Verdana, Geneva, Tahoma, sans-serif;">Expert Team</h4>
+                        <p>Our team of master watchmakers brings decades of experience to every creation.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="feature-item mb-4">
+                <div class="feature-content align-items-center">
+                    <i class="fas fa-leaf fa-2x text-gold me-3"></i>
+                    <div>
+                        <h4 style="font-family:Verdana, Geneva, Tahoma, sans-serif;">Sustainable Luxury</h4>
+                        <p>Committed to ethical sourcing and environmentally responsible practices.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="feature-item mb-4">
+                <div class="feature-content align-items-center">
+                    <i class="fas fa-globe fa-2x text-gold me-3"></i>
+                    <div>
+                        <h4 style="font-family:Verdana, Geneva, Tahoma, sans-serif;">Global Heritage</h4>
+                        <p>A century of tradition meets cutting-edge technology in every timepiece.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
