@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block title %}My Wishlist - Y2K Watches{% endblock %}
+
+{% block content %}
+<section class="wishlist-page">
+    <div class="container">
+        <div class="wishlist-header">
+            <h1><i class="fas fa-heart"></i> My Wishlist</h1>
+            <p>Your saved watches for future purchase</p>
+        </div>
+        
+        {% if wishlist_items %}
+            <div class="wishlist-grid">
+                {% for item in wishlist_items %}
+                <div class="wishlist-card">
+                    <div class="wishlist-image">
+                        <img src="{{ item.image_url }}" alt="{{ item.name }}">
+                    </div>
+                    <div class="wishlist-content">
+                        <div class="wishlist-info">
+                            <h3>{{ item.name }}</h3>
+                            <p class="brand">{{ item.brand }}</p>
+                            <p class="price">${{ "%.2f"|format(item.price) }}</p>
+                            <p class="added-date">Added {{ item.added_at.strftime('%B %d, %Y') }}</p>
+                        </div>
+                        <div class="wishlist-actions">
+                            <form action="{{ url_for('add_to_cart', product_id=item.product_id) }}" method="POST" class="add-cart-form">
+                                <button type="submit" class="btn btn-gold">
+                                    <i class="fas fa-shopping-cart"></i> Add to Cart
+                                </button>
+                            </form>
+                            <form action="{{ url_for('remove_from_wishlist', wishlist_id=item.id) }}" method="POST" class="remove-form">
+                                <button type="submit" class="btn btn-outline-danger">
+                                    <i class="fas fa-trash"></i> Remove
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            
+            <div class="wishlist-summary">
+                <div class="summary-card">
+                    <h3>Wishlist Summary</h3>
+                    <div class="summary-stats">
+                        <div class="stat">
+                            <span class="stat-number">{{ wishlist_items|length }}</span>
+                            <span class="stat-label">Items</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">${{ "%.2f"|format(wishlist_items|sum(attribute='price')) }}</span>
+                            <span class="stat-label">Total Value</span>
+                        </div>
+                    </div>
+                    <div class="summary-actions">
+                        <a href="{{ url_for('products') }}" class="btn btn-outline-gold">
+                            <i class="fas fa-plus"></i> Add More Items
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="empty-wishlist">
+                <div class="empty-content">
+                    <i class="fas fa-heart-broken fa-4x"></i>
+                    <h2>Your wishlist is empty</h2>
+                    <p>Save items you love to your wishlist and come back to them later.</p>
+                    <a href="{{ url_for('products') }}" class="btn btn-gold">
+                        <i class="fas fa-shopping-cart"></i> Start Shopping
+                    </a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}
