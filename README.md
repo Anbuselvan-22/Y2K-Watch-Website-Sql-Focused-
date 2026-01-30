@@ -337,7 +337,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Contact
 
-- **Project Link**: [https://github.com/yourusername/y2k-luxury-watches](https://github.com/yourusername/y2k-luxury-watches)
+- **Project Link**: [https://github.com/Anbuselvan-22/y2k-luxury-watches](https://github.com/Anbuselvan-22/y2k-luxury-watches)
 - **Demo**: [Live Demo Link](https://your-demo-link.com)
 
 ---
