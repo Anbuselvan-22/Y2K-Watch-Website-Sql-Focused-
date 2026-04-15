@@ -1,0 +1,22 @@
+Sql- cd "/Users/anbuselvan/DBMS/login-system" &&
+ python show_tables.py
+
+ 📋 MySQL Terminal Queries Guide
+ 1,mysql -u root -p
+ 2.USE login_db;
+ 3.SELECT id, name, price, stock_quantity FROM products;
+ 4.SELECT * FROM orders;
+ 5.SELECT SUM(total_amount) AS total_revenue FROM orders;
+ 6.SELECT u.username, p.name, c.quantity 
+FROM cart c
+JOIN users u ON c.user_id = u.id
+JOIN products p ON c.product_id = p.id;
+
+Start;
+🚀 Quick Start - 3 Simple Steps:
+Step 1: Open Terminal and Navigate
+cd login-system
+Step 2: Run the App
+python app.py
+Step 3: Open Browser
+http://127.0.0.1:8000
