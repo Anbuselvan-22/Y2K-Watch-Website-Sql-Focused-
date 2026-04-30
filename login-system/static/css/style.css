@@ -1,10 +1,11 @@
 /* ================= ROOT ================= */
 :root {
-    --black: #0e0e0e;
-    --white: #f9f9f9;
-    --gray-dark: #1c1c1c;
-    --gray-light: #b5b5b5;
-    --border: rgba(255, 255, 255, 0.15);
+    --color-black: #000000;
+    --color-white: #ffffff;
+    --color-gray-dark: #333333;
+    --color-gray-medium: #666666;
+    --color-gray-light: #999999;
+    --color-gray-very-light: #cccccc;
 }
 
 /* ================= RESET ================= */
