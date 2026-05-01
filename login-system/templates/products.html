@@ -85,7 +85,7 @@
             <div class="col-12 col-sm-6 col-md-6 col-lg-3">
                 <div class="card h-100 product-card shadow-sm">
                     <div class="product-img-wrapper">
-                        <img src="{{ product.image_url }}" alt="{{ product.name }}" class="card-img-top">
+                        <img src="{{ url_for('static', filename=product.image_url) }}" alt="{{ product.name }}" class="card-img-top">
                         <!-- Wishlist Button -->
                         <form action="{{ url_for('add_to_wishlist', product_id=product.id) }}" method="POST" class="wishlist-form">
                             <button type="submit" class="wishlist-btn" title="Add to Wishlist">

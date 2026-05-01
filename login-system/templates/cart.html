@@ -15,7 +15,7 @@
                         {% for item in cart_items %}
                         <div class="cart-item align-items-center mb-4 pb-3 border-bottom">
                             <div class="cart-item-image">
-                                <img src="{{ item.image_url }}" class="cart-img rounded" alt="{{ item.name }}">
+                                <img src="{{ url_for('static', filename=item.image_url) }}" class="cart-img rounded" alt="{{ item.name }}">
                             </div>
                             <div class="cart-item-details">
                                 <h5 class="text-gold">{{ item.name }}</h5>

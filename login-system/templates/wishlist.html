@@ -15,7 +15,7 @@
                 {% for item in wishlist_items %}
                 <div class="wishlist-card">
                     <div class="wishlist-image">
-                        <img src="{{ item.image_url }}" alt="{{ item.name }}">
+                        <img src="{{ url_for('static', filename=item.image_url) }}" alt="{{ item.name }}">
                     </div>
                     <div class="wishlist-content">
                         <div class="wishlist-info">
